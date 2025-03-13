@@ -1,0 +1,26 @@
+neo4j:
+  edition: "enterprise"
+  acceptLicenseAgreement: "yes"
+  name: "neo4j-standalone"
+  password: "project1phase2"
+  resources:
+    memory: "2Gi"
+    cpu: "1"
+
+config:
+  dbms.memory.heap.initial_size: "1G"
+  dbms.memory.heap.max_size: "1G"
+  dbms.memory.pagecache.size: "512M"
+  dbms.security.auth_enabled: "true"
+  dbms.security.procedures.unrestricted: "gds.*,apoc.*"
+
+env:
+  NEO4J_PLUGINS: '["graph-data-science", "apoc"]'
+
+plugins:
+  - "apoc"
+  - "graph-data-science"
+
+volumes:
+  data:
+    mode: defaultStorageClass
